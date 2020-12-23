@@ -1,0 +1,22 @@
+[package]
+name = "rust_raytracer"
+version = "0.1.0"
+authors = ["Jérôme Mahuet <jerome.mahuet@gmail.com>"]
+edition = "2018"
+
+[lib]
+name = "raytracer_lib"
+path = "lib/raytracer.rs"
+
+[[bin]]
+name = "raytracer"
+path = "src/main.rs"
+
+[dependencies]
+itertools = "0.9.0"
+png = "0.16.8"
+
+[profile.release]
+lto = true
+codegen-units = 1
+opt-level = 3
