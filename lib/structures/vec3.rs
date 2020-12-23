@@ -1,6 +1,6 @@
 use std::ops::{Add, AddAssign, Div, DivAssign, Index, IndexMut, Mul, MulAssign, Neg, Sub};
 
-#[derive(Debug, Default)]
+#[derive(Debug, Default, Clone, Copy)]
 pub struct Vec3([f32; 3]);
 
 impl Vec3 {
@@ -28,6 +28,10 @@ impl Vec3 {
 
     pub fn squared_len(&self) -> f32 {
         self.x() * self.x() + self.y() * self.y() + self.z() * self.z()
+    }
+
+    pub fn unit_vector(self) -> Vec3 {
+        self / self.len()
     }
 }
 
@@ -170,5 +174,11 @@ impl Neg for Vec3 {
 
     fn neg(self) -> Self::Output {
         Self([-self.x(), -self.y(), -self.z()])
+    }
+}
+
+impl From<(f32, f32, f32)> for Vec3 {
+    fn from((x, y, z): (f32, f32, f32)) -> Self {
+        Self::new(x, y, z)
     }
 }
