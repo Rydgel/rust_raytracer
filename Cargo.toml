@@ -14,6 +14,7 @@ path = "src/main.rs"
 
 [dependencies]
 itertools = "0.9.0"
+num-iter = "0.1.42"
 png = "0.16.8"
 
 [profile.release]
